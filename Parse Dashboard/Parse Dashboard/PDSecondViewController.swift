@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SecondViewController.swift
 //  Parse Dashboard
 //
 //  Created by Rishabh Tayal on 11/19/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class PDSecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
