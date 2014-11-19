@@ -18,5 +18,8 @@ class PDUtitility: NSObject {
     class func setCurrentAppWithAppID(appid: String) {
         NSUserDefaults.standardUserDefaults().setObject(appid, forKey: UDCurrentAppIDKey)
         NSUserDefaults.standardUserDefaults().synchronize()
+        
+        var app: AppInfo = PDUtitility.getCurrentApp()
+        Parse.setApplicationId(app.appid, clientKey: app.clientkey)
     }
 }

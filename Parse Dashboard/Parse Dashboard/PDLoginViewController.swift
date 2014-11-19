@@ -17,11 +17,7 @@ class PDLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if (AppInfo.MR_numberOfEntities() != 0) {
-            var appDelegate = UIApplication.sharedApplication().delegate as PDAppDelegate
-            appDelegate.setMainView()
-        }
-        // Do any additional setup after loading the view.
+             // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,6 +30,8 @@ class PDLoginViewController: UIViewController {
         //        defaults.setObject(appIDTextField.text, forKey: UDAppIdKey);
         //        defaults.setObject(clientKeyTextField.text, forKey: UDClientKey);
         //        defaults.synchronize();
+        
+        self.view.endEditing(true)
         
         var appInfo: AppInfo = AppInfo.MR_createEntity() as AppInfo
         appInfo.appid = appIDTextField.text

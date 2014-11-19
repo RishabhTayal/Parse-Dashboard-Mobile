@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class PDAppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,26 +18,41 @@ class PDAppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        Fabric.with([Crashlytics()])
+        
         MagicalRecord.setupCoreDataStackWithStoreNamed("Model")
-    
+        
+        if (AppInfo.MR_numberOfEntities() != 0) {
+            setMainView()
+        } else {
+            setAddAppView()
+        }
+        
         return true
     }
     
     func setMainView() {
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "loggedIn")
-        NSUserDefaults.standardUserDefaults().synchronize()
-
-        var app: AppInfo = PDUtitility.getCurrentApp()
-        Parse.setApplicationId(app.appid, clientKey: app.clientkey)
-               
+        PDUtitility.setCurrentAppWithAppID(PDUtitility.getCurrentApp().appid)
+        
         var sb: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var vc: UITabBarController = sb.instantiateViewControllerWithIdentifier("TabController") as UITabBarController
-       
+        
         let frame = UIScreen.mainScreen().bounds
         window = UIWindow(frame: frame)
         self.window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
+    
+    func setAddAppView() {
+        var sb: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var vc: PDLoginViewController = sb.instantiateViewControllerWithIdentifier("PDLoginViewController") as PDLoginViewController
+        
+        let frame = UIScreen.mainScreen().bounds
+        window = UIWindow(frame: frame)
+        self.window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+    }
+    
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
