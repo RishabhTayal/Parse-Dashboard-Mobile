@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AppInfo" representedClassName="AppInfo" syncable="YES">
+        <attribute name="appid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientkey" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="classes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PFClass" inverseName="app" inverseEntity="PFClass" syncable="YES"/>
+    </entity>
+    <entity name="PFClass" representedClassName="PFClass" syncable="YES">
+        <attribute name="classname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="app" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AppInfo" inverseName="classes" inverseEntity="AppInfo" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AppInfo" positionX="-263" positionY="50" width="128" height="103"/>
+        <element name="PFClass" positionX="-54" positionY="117" width="128" height="73"/>
+    </elements>
+</model>

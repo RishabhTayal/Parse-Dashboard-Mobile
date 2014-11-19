@@ -108,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ThR-9W-XOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1996" y="-1085"/>
+            <point key="canvasLocation" x="2157" y="-1087"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gnn-hP-toa">
@@ -138,10 +138,11 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vrw-qz-QDg">
-                                <rect key="frame" x="190" y="119" width="221" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="TextFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Vrw-qz-QDg">
+                                <rect key="frame" x="157" y="119" width="286" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="221" id="LlR-YW-3fk"/>
+                                    <constraint firstAttribute="height" constant="46" id="XbC-pv-wZi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -150,7 +151,7 @@
                                 </connections>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vrw-qz-QDg" firstAttribute="top" secondItem="AQb-Zw-eQb" secondAttribute="bottom" constant="55" id="5Kk-u5-8hw"/>
                             <constraint firstAttribute="centerX" secondItem="Vrw-qz-QDg" secondAttribute="centerX" constant="-0.5" id="XiJ-te-yep"/>
@@ -178,9 +179,26 @@
             <point key="canvasLocation" x="2905" y="-382"/>
         </scene>
         <!--Setting-->
+        <scene sceneID="3S4-fn-wN6">
+            <objects>
+                <navigationController id="AUq-rf-69m" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Setting" id="CJA-Eb-uvR"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="czQ-oR-jz1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="L0B-Xq-6QV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KRp-vb-yjR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="397"/>
+        </scene>
+        <!--Setting-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Parse_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="PDSecondViewController" customModule="Parse_Dashboard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -188,13 +206,35 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Pe7-xu-nll">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="nDe-lo-nIW">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nDe-lo-nIW" id="iaw-Q6-M5S">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="Yaw-BV-gTh"/>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="0vh-ea-8lU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Setting" image="second" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" id="YtU-uX-egH"/>
+                    <connections>
+                        <outlet property="tableView" destination="Pe7-xu-nll" id="dBv-x7-eeJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="1487" y="397"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="i45-Hd-Ghj">
@@ -233,6 +273,11 @@
                                     <action selector="nextButtonClick:" destination="T1L-vO-f1N" eventType="touchUpInside" id="5fP-oi-DcW"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="GoCandid Dev" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bRJ-Rd-sWa">
+                                <rect key="frame" x="242" y="28" width="116" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -244,6 +289,7 @@
                     </view>
                     <connections>
                         <outlet property="appIDTextField" destination="ucx-9t-Q9N" id="O97-UN-TUk"/>
+                        <outlet property="appNameTextField" destination="bRJ-Rd-sWa" id="Ohu-ql-2XE"/>
                         <outlet property="clientKeyTextField" destination="MoA-T7-saN" id="7B0-be-rrU"/>
                     </connections>
                 </viewController>
@@ -263,7 +309,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="ZJd-T6-Ike" kind="relationship" relationship="viewControllers" id="XPu-tZ-0uh"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="AUq-rf-69m" kind="relationship" relationship="viewControllers" id="eSQ-VQ-zUK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -272,6 +318,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TextFieldBackground" width="7" height="7"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>

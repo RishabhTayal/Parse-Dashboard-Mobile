@@ -11,9 +11,11 @@
 
 //NSUserDefaults Keys
 
-#define UDAppIdKey @"appID"
-#define UDClientKey @"clientKey"
+//#define UDAppIdKey @"appID"
+//#define UDClientKey @"clientKey"
 
-#define UDClassNames @"classNames"
+//#define UDClassNames @"classNames"
+
+#define UDCurrentAppIDKey @"currentAppID"
 
 #endif

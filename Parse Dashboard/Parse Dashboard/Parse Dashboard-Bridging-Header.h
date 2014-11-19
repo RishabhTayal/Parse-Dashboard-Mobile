@@ -3,4 +3,8 @@
 //
 
 #import <Parse/Parse.h>
+#import <MagicalRecord/MagicalRecord.h>
 #import "Constants.h"
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import "AppInfo.h"
+#import "PFClass.h"

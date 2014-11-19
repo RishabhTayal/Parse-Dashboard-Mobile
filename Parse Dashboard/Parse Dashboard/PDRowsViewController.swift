@@ -23,15 +23,20 @@ class PDRowsViewController: UIViewController, UITableViewDataSource, UITableView
         var query = PFQuery(className: className)
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             println(objects)
-            self.datasource = objects
             
-            self.title = NSString(format: "%@ (%d)", self.className, objects.count)
-            self.tableView.reloadData()
+            if objects != nil {
+                self.datasource = objects
+                
+                self.title = NSString(format: "%@ (%d)", self.className, objects.count)
+                self.tableView.reloadData()
+            } else {
+            UIAlertView(title: "Error", message: "Could not find any objects for the class.", delegate: nil, cancelButtonTitle: "Ok").show()
+            }
         }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return datasource.count
+        return datasource.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

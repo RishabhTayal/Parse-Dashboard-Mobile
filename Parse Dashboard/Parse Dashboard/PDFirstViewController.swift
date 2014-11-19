@@ -15,12 +15,22 @@ class PDFirstViewController: UIViewController, PDAddClassDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        datasource = NSUserDefaults.standardUserDefaults().objectForKey("classes") as [String]!
         
-        let classes: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey(UDClassNames)
-        if classes != nil {
-            var readArray: [NSString] = classes! as [NSString]
-            datasource = readArray
+        var appInfo: AppInfo = PDUtitility.getCurrentApp()
+        
+        var classes: NSMutableSet = appInfo.classes as NSMutableSet
+        
+        if classes.count != 0 {
+//            var readArray: [NSString] = classes! as [NSString]
+            classes.enumerateObjectsUsingBlock({ (object: AnyObject!, stop: UnsafeMutablePointer) -> Void in
+                var pfClass: PFClass = object as PFClass
+                self.datasource.append(pfClass.classname)
+            })
+//            for (var i = 0; i < classes.count; i++) {
+//                var pfclass: PFClass = classes. as PFClass;
+//                datasource.append(pfclass.classname)
+//            }
+//            datasource = readArray
         }
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
@@ -37,10 +47,11 @@ class PDFirstViewController: UIViewController, PDAddClassDelegate, UITableViewDa
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
+        tableView.setEditing(editing, animated: animated)
         if (editing) {
-            
+            self.navigationItem.rightBarButtonItem?.enabled = false
         } else {
-            
+            self.navigationItem.rightBarButtonItem?.enabled = true
         }
     }
     
@@ -62,25 +73,37 @@ class PDFirstViewController: UIViewController, PDAddClassDelegate, UITableViewDa
     func addClassDidDismiss(controller: PDAddClassViewController, className: String) {
         println(className)
         
-        let classes: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey(UDClassNames)
+//        let classes: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey(UDClassNames)
+        var app: AppInfo = PDUtitility.getCurrentApp()
+        var classes: NSMutableSet? = app.classes as? NSMutableSet
+
         
-        if classes == nil {
-            var newClasses: [NSString] = [NSString]()
-            newClasses.append(className)
-            NSUserDefaults.standardUserDefaults().setObject(newClasses, forKey: UDClassNames)
-            NSUserDefaults.standardUserDefaults().synchronize()
-        } else {
-            var readArray: [NSString] = classes! as [NSString]
-            readArray.append(className)
-            NSUserDefaults.standardUserDefaults().setObject(readArray, forKey: UDClassNames)
-            NSUserDefaults.standardUserDefaults().synchronize()
-        }
-//         classes.append(className)
-        NSUserDefaults.standardUserDefaults().synchronize()
-//        if (classes) {
-//            classes = []
-//            NSUserDefaults.standardUserDefaults().setObject(, forKey: )
+        var newClass: PFClass = PFClass.MR_createEntity() as PFClass
+        newClass.app = app
+        newClass.classname = className
+        
+        classes?.addObject(newClass)
+        
+        app.addClasses(classes)
+        
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion(nil);
+//        if classes == nil {
+//            var newClasses: [NSString] = [NSString]()
+//            newClasses.append(className)
+////            NSUserDefaults.standardUserDefaults().setObject(newClasses, forKey: UDClassNames)
+////            NSUserDefaults.standardUserDefaults().synchronize()
+//        } else {
+//            var readArray: [NSString] = classes! as [NSString]
+//            readArray.append(className)
+//            NSUserDefaults.standardUserDefaults().setObject(readArray, forKey: UDClassNames)
+//            NSUserDefaults.standardUserDefaults().synchronize()
 //        }
+//        //         classes.append(className)
+//        NSUserDefaults.standardUserDefaults().synchronize()
+        //        if (classes) {
+        //            classes = []
+        //            NSUserDefaults.standardUserDefaults().setObject(, forKey: )
+        //        }
         
         datasource.append(className)
         tableView.reloadData()
@@ -94,6 +117,32 @@ class PDFirstViewController: UIViewController, PDAddClassDelegate, UITableViewDa
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         cell.textLabel.text = datasource[indexPath.row]
         return cell
+    }
+    
+    //    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    //        return true
+    //    }
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.Delete;
+    }
+    
+    //    func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    //        return false
+    //    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            var apps: [AppInfo] = AppInfo.MR_findAll() as [AppInfo]
+            for (var i = 0; i < apps.count; i++) {
+                var app: AppInfo = apps[i] as AppInfo
+                if (app.appname == datasource[indexPath.row]) {
+                    app.MR_deleteEntity()
+                }
+            }
+            datasource.removeAtIndex(indexPath.row)
+        }
     }
 }
 

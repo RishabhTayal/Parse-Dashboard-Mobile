@@ -13,9 +13,11 @@ class PDAppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        MagicalRecord.setupCoreDataStackWithStoreNamed("Model")
+    
         return true
     }
     
@@ -23,9 +25,9 @@ class PDAppDelegate: UIResponder, UIApplicationDelegate {
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "loggedIn")
         NSUserDefaults.standardUserDefaults().synchronize()
 
-        println(NSUserDefaults.standardUserDefaults().stringForKey(UDAppIdKey))
-        Parse.setApplicationId(NSUserDefaults.standardUserDefaults().stringForKey(UDAppIdKey), clientKey: NSUserDefaults.standardUserDefaults().stringForKey(UDClientKey));
-        
+        var app: AppInfo = PDUtitility.getCurrentApp()
+        Parse.setApplicationId(app.appid, clientKey: app.clientkey)
+               
         var sb: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var vc: UITabBarController = sb.instantiateViewControllerWithIdentifier("TabController") as UITabBarController
        

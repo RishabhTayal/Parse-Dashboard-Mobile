@@ -12,12 +12,12 @@ class PDLoginViewController: UIViewController {
     
     @IBOutlet var appIDTextField: UITextField!
     @IBOutlet var clientKeyTextField: UITextField!
+    @IBOutlet var appNameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var defaults = NSUserDefaults.standardUserDefaults();
-        if (defaults.objectForKey(UDAppIdKey) != nil && defaults.objectForKey(UDClientKey) != nil) {
+        if (AppInfo.MR_numberOfEntities() != 0) {
             var appDelegate = UIApplication.sharedApplication().delegate as PDAppDelegate
             appDelegate.setMainView()
         }
@@ -30,10 +30,18 @@ class PDLoginViewController: UIViewController {
     }
     
     @IBAction func nextButtonClick(sender: AnyObject) {
-        var defaults = NSUserDefaults.standardUserDefaults();
-        defaults.setObject(appIDTextField.text, forKey: UDAppIdKey);
-        defaults.setObject(clientKeyTextField.text, forKey: UDClientKey);
-        defaults.synchronize();
+        //        var defaults = NSUserDefaults.standardUserDefaults();
+        //        defaults.setObject(appIDTextField.text, forKey: UDAppIdKey);
+        //        defaults.setObject(clientKeyTextField.text, forKey: UDClientKey);
+        //        defaults.synchronize();
+        
+        var appInfo: AppInfo = AppInfo.MR_createEntity() as AppInfo
+        appInfo.appid = appIDTextField.text
+        appInfo.clientkey = clientKeyTextField.text
+        appInfo.appname = appNameTextField.text
+        saveContext()
+        
+        PDUtitility.setCurrentAppWithAppID(appInfo.appid)
         
         var appDelegate = UIApplication.sharedApplication().delegate as PDAppDelegate
         appDelegate.setMainView()
@@ -49,4 +57,9 @@ class PDLoginViewController: UIViewController {
     }
     */
     
+    func saveContext() {
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion { (success: Bool, error: NSError!) -> Void in
+            
+        }
+    }
 }
