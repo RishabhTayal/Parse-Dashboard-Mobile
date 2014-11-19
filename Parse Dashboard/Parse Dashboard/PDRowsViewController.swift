@@ -18,10 +18,14 @@ class PDRowsViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = className
+        
         var query = PFQuery(className: className)
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             println(objects)
             self.datasource = objects
+            
+            self.title = NSString(format: "%@ (%d)", self.className, objects.count)
             self.tableView.reloadData()
         }
     }

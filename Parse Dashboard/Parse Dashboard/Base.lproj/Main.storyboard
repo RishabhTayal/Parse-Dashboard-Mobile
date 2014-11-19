@@ -4,11 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Classes-->
+        <!--Data-->
         <scene sceneID="Q9g-qc-z2G">
             <objects>
                 <navigationController id="ZJd-T6-Ike" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Classes" id="ZLt-BJ-lNZ"/>
+                    <tabBarItem key="tabBarItem" title="Data" id="ZLt-BJ-lNZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UV0-9l-5n8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
