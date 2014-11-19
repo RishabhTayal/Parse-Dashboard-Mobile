@@ -35,7 +35,8 @@ class PDSecondViewController: UIViewController, UITableViewDelegate, UITableView
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         var app: AppInfo = PDUtitility.getCurrentApp()
         println(app.appname)
-        cell.textLabel.text = app.appname
+        cell.textLabel.text = "Current app"
+        cell.detailTextLabel?.text = app.appname
         return cell
     }
     
