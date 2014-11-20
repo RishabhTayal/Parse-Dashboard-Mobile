@@ -24,6 +24,11 @@ class PDAddClassViewController: UIViewController, UITextFieldDelegate {
         
         doneButton.enabled = false
         
+        var paddingView: UIView = UIView(frame: CGRectMake(0, 0, 5, 20));
+        paddingView.backgroundColor = UIColor.clearColor()
+        textField.leftView = paddingView;
+        textField.leftViewMode = UITextFieldViewMode.Always;
+        
         var tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tapGesture)
     }

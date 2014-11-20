@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Social
 
-class PDMenuViewController: UITableViewController {
+class PDMenuViewController: UITableViewController, PDMenuFooterDelegate {
     
     var apps: [AppInfo] = []
     override func viewDidLoad() {
@@ -32,10 +33,22 @@ class PDMenuViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        var footerView: UIView = NSBundle.mainBundle().loadNibNamed("MenuTableFooter", owner: self, options: nil)[0] as UIView
-        
+        var footerView: PDMenuTableFooter = NSBundle.mainBundle().loadNibNamed("MenuTableFooter", owner: self, options: nil)[0] as PDMenuTableFooter
+        footerView.delegate = self
         footerView.frame = CGRectMake(0, 0, tableView.frame.size.width, footerView.frame.size.height)
         return footerView;
+    }
+    
+    func facebookClicked() {
+        var facebookSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        facebookSheet.setInitialText("I am using this wonderful app called ParseBoard to view my Parse.com data on iOS device. Get it now. https://itunes.apple.com/us/app/parseboard-dashboard-for-parse/id943609004?ls=1&mt=8")
+        self.presentViewController(facebookSheet, animated: true, completion: nil)
+    }
+    
+    func twitterClicked() {
+        var tweetSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        tweetSheet.setInitialText("I am using this wonderful app called @ParseBoard to view my Parse.com data on iOS device. Get it now. https://itunes.apple.com/us/app/parseboard-dashboard-for-parse/id943609004?ls=1&mt=8")
+        self.presentViewController(tweetSheet, animated: true, completion: nil)
     }
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -69,7 +82,7 @@ class PDMenuViewController: UITableViewController {
         } else {
             cell?.textLabel.text = (apps[indexPath.row] as AppInfo).appname
         }
-       
+        
         return cell!
     }
     
@@ -86,7 +99,7 @@ class PDMenuViewController: UITableViewController {
             var vc : PDFirstViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PDFirstViewController") as PDFirstViewController
             nav.viewControllers = [vc]
         }
-      
+        
         self.menuContainerViewController.setMenuState(MFSideMenuStateClosed, completion: { () -> Void in
             if indexPath.row == self.apps.count {
                 var viewC: UIViewController = nav.viewControllers[0] as UIViewController
@@ -110,7 +123,7 @@ class PDMenuViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {            
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
             
             var app: AppInfo = apps[indexPath.row] as AppInfo
             app.MR_deleteEntity()

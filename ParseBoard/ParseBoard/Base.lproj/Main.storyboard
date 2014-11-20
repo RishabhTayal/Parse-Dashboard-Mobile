@@ -219,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MjO-In-unF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3315" y="-382"/>
+            <point key="canvasLocation" x="2871" y="-382"/>
         </scene>
         <!--Add Class View Controller-->
         <scene sceneID="zLx-PN-dct">
@@ -233,7 +233,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="TextFieldBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Vrw-qz-QDg">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Class name" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Vrw-qz-QDg">
                                 <rect key="frame" x="157" y="119" width="286" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="286" id="LlR-YW-3fk"/>

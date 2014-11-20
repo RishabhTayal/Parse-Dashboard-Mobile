@@ -4,34 +4,53 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDMenuTableFooter" customModule="ParseBoard" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PDMenuTableFooter" customModule="ParseBoard" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="258" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLo-4z-7vZ">
-                    <rect key="frame" x="43" y="15" width="68" height="30"/>
-                    <state key="normal" title="Facebook">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AnD-5z-tJO">
+                    <rect key="frame" x="169" y="9" width="60" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="3Hw-G6-aa7"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="c3m-dd-2d2"/>
+                        <constraint firstAttribute="height" constant="41" id="uPe-0T-SkP"/>
+                    </constraints>
+                    <state key="normal" image="icon_twitter_profile">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="twitterClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="A2n-hi-V1K"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AnD-5z-tJO">
-                    <rect key="frame" x="172" y="15" width="46" height="30"/>
-                    <state key="normal" title="Twitter">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLo-4z-7vZ">
+                    <rect key="frame" x="43" y="8" width="61" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="61" id="A7W-ak-Tcn"/>
+                        <constraint firstAttribute="height" constant="43" id="hdQ-og-u3W"/>
+                    </constraints>
+                    <state key="normal" image="icon_facebook_profile">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="facebookClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="vAl-nM-fMM"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="aLo-4z-7vZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="43" id="CHa-PF-W2h"/>
-                <constraint firstAttribute="trailing" secondItem="AnD-5z-tJO" secondAttribute="trailing" constant="40" id="JPt-cu-tvM"/>
+                <constraint firstAttribute="trailing" secondItem="AnD-5z-tJO" secondAttribute="trailing" constant="29" id="JPt-cu-tvM"/>
                 <constraint firstAttribute="centerY" secondItem="aLo-4z-7vZ" secondAttribute="centerY" id="JRR-AO-2MA"/>
                 <constraint firstAttribute="centerY" secondItem="AnD-5z-tJO" secondAttribute="centerY" id="wYp-xX-Slr"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="652" y="259"/>
+            <point key="canvasLocation" x="773" y="267"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_facebook_profile" width="22" height="22"/>
+        <image name="icon_twitter_profile" width="26" height="21"/>
+    </resources>
 </document>
