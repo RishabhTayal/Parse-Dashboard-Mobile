@@ -38,7 +38,6 @@ class PDAppDelegate: UIResponder, UIApplicationDelegate {
         
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().titleTextAttributes = titleDict
-        window?.tintColor = UIColor.whiteColor()
         
         return true
     }
@@ -59,6 +58,8 @@ class PDAppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: frame)
         self.window?.rootViewController = inst
         window?.makeKeyAndVisible()
+        
+        window?.tintColor = UIColor.whiteColor()
     }
     
     func setAddAppView() {
@@ -69,6 +70,8 @@ class PDAppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: frame)
         self.window?.rootViewController = vc
         window?.makeKeyAndVisible()
+        
+        window?.tintColor = UIColor.whiteColor()
     }
     
     

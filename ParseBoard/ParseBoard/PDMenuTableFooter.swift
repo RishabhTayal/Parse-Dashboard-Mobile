@@ -14,8 +14,6 @@ protocol PDMenuFooterDelegate {
 }
 
 class PDMenuTableFooter: UIView {
-
-    @IBOutlet var button: UIButton!
     
     var delegate: PDMenuFooterDelegate!
 

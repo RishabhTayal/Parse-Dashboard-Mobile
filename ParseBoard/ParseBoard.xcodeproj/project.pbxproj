@@ -156,7 +156,6 @@
 				06DE58441A1D16830004CC57 /* Model.xcdatamodeld */,
 				06DE586E1A1D3F2E0004CC57 /* Model */,
 				0678CE301A1CEBA9002A0668 /* Images.xcassets */,
-				0678CE321A1CEBA9002A0668 /* LaunchScreen.xib */,
 				0678CE251A1CEBA8002A0668 /* Supporting Files */,
 			);
 			name = "Parse Dashboard";
@@ -166,6 +165,7 @@
 		0678CE251A1CEBA8002A0668 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0678CE321A1CEBA9002A0668 /* LaunchScreen.xib */,
 				06DE58791A1E5FA20004CC57 /* ParseBoard-Bridging-Header.h */,
 				0678CE261A1CEBA8002A0668 /* Info.plist */,
 			);
@@ -533,7 +533,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = ParseBoard;
-				PROVISIONING_PROFILE = "7c05df2a-14fa-4482-81c9-38912affae20";
+				PROVISIONING_PROFILE = "f26572e6-efe8-4d6e-bffb-2d293622deb4";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseBoard/ParseBoard-Bridging-Header.h";
 			};
 			name = Release;

@@ -8,7 +8,7 @@
         <!--Data-->
         <scene sceneID="Q9g-qc-z2G">
             <objects>
-                <navigationController id="ZJd-T6-Ike" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ClassesNavigationController" id="ZJd-T6-Ike" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Data" id="ZLt-BJ-lNZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UV0-9l-5n8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -285,7 +285,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="RjjejatHY8BsqER68vg48jtr9nRv0FVAfKqryjja" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ucx-9t-Q9N">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Application ID" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ucx-9t-Q9N">
                                 <rect key="frame" x="147" y="122" width="308" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="308" id="ZwP-sN-hVV"/>
@@ -294,7 +294,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="hTwjS9Ng9azIQoOfpQ6xeYX3Ah8mesiCWGt0gz3b" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MoA-T7-saN">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Client Key" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MoA-T7-saN">
                                 <rect key="frame" x="126" y="207" width="349" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="349" id="4Eu-pu-v84"/>
@@ -303,7 +303,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="GoCandid Dev" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bRJ-Rd-sWa">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter app name" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bRJ-Rd-sWa">
                                 <rect key="frame" x="164" y="44" width="273" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="607-wJ-Nrr"/>
