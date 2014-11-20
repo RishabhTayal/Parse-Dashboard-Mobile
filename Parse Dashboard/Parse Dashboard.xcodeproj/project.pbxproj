@@ -20,7 +20,6 @@
 		0678CE581A1CF850002A0668 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0678CE571A1CF850002A0668 /* AudioToolbox.framework */; };
 		0678CE5A1A1CF869002A0668 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0678CE591A1CF869002A0668 /* SystemConfiguration.framework */; };
 		0678CE5C1A1CF889002A0668 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0678CE5B1A1CF889002A0668 /* MobileCoreServices.framework */; };
-		06DE58401A1CFF2D0004CC57 /* PDAddClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE583F1A1CFF2D0004CC57 /* PDAddClassViewController.swift */; };
 		06DE58421A1D04A20004CC57 /* PDRowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE58411A1D04A20004CC57 /* PDRowsViewController.swift */; };
 		06DE58461A1D16830004CC57 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 06DE58441A1D16830004CC57 /* Model.xcdatamodeld */; };
 		06DE58491A1D1CFE0004CC57 /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 06DE58441A1D16830004CC57 /* Model.xcdatamodeld */; };
@@ -29,7 +28,9 @@
 		06DE58681A1D3A840004CC57 /* PDUtitility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE58671A1D3A840004CC57 /* PDUtitility.swift */; };
 		06DE586C1A1D3EBE0004CC57 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DE586A1A1D3EBE0004CC57 /* Crashlytics.framework */; };
 		06DE586D1A1D3EBF0004CC57 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DE586B1A1D3EBE0004CC57 /* Fabric.framework */; };
-		06DE58701A1D40660004CC57 /* PDAppSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE586F1A1D40660004CC57 /* PDAppSelectionViewController.swift */; };
+		06DE58721A1D76080004CC57 /* PDMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE58711A1D76080004CC57 /* PDMenuViewController.swift */; };
+		06DE58741A1E53BB0004CC57 /* PDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE58731A1E53BB0004CC57 /* PDButton.swift */; };
+		06DE58761A1E555A0004CC57 /* PDAddClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE58751A1E555A0004CC57 /* PDAddClassViewController.swift */; };
 		23EA8BA046E3C1F484A1466D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96AEC7C5F66F4F9FD1B7B0B9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +51,6 @@
 		0678CE571A1CF850002A0668 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0678CE591A1CF869002A0668 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0678CE5B1A1CF889002A0668 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		06DE583F1A1CFF2D0004CC57 /* PDAddClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDAddClassViewController.swift; sourceTree = "<group>"; };
 		06DE58411A1D04A20004CC57 /* PDRowsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDRowsViewController.swift; sourceTree = "<group>"; };
 		06DE58431A1D0ABE0004CC57 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		06DE58451A1D16830004CC57 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -61,7 +61,9 @@
 		06DE58671A1D3A840004CC57 /* PDUtitility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDUtitility.swift; sourceTree = "<group>"; };
 		06DE586A1A1D3EBE0004CC57 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		06DE586B1A1D3EBE0004CC57 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		06DE586F1A1D40660004CC57 /* PDAppSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDAppSelectionViewController.swift; sourceTree = "<group>"; };
+		06DE58711A1D76080004CC57 /* PDMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDMenuViewController.swift; sourceTree = "<group>"; };
+		06DE58731A1E53BB0004CC57 /* PDButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDButton.swift; sourceTree = "<group>"; };
+		06DE58751A1E555A0004CC57 /* PDAddClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDAddClassViewController.swift; sourceTree = "<group>"; };
 		435BD845ED1C43A8D15F42D3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		96AEC7C5F66F4F9FD1B7B0B9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE0B227905CAE6816C565BB2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,21 +111,22 @@
 			isa = PBXGroup;
 			children = (
 				06DE58671A1D3A840004CC57 /* PDUtitility.swift */,
+				06DE58751A1E555A0004CC57 /* PDAddClassViewController.swift */,
 				0678CE271A1CEBA8002A0668 /* PDAppDelegate.swift */,
 				0678CE291A1CEBA8002A0668 /* PDFirstViewController.swift */,
-				06DE583F1A1CFF2D0004CC57 /* PDAddClassViewController.swift */,
 				06DE58411A1D04A20004CC57 /* PDRowsViewController.swift */,
 				0678CE2B1A1CEBA8002A0668 /* PDSecondViewController.swift */,
 				0678CE491A1CEDB0002A0668 /* PDLoginViewController.swift */,
+				06DE58711A1D76080004CC57 /* PDMenuViewController.swift */,
 				06DE58431A1D0ABE0004CC57 /* Constants.h */,
 				0678CE2D1A1CEBA8002A0668 /* Main.storyboard */,
-				06DE586F1A1D40660004CC57 /* PDAppSelectionViewController.swift */,
 				06DE58441A1D16830004CC57 /* Model.xcdatamodeld */,
 				06DE586E1A1D3F2E0004CC57 /* Model */,
 				0678CE301A1CEBA9002A0668 /* Images.xcassets */,
 				0678CE321A1CEBA9002A0668 /* LaunchScreen.xib */,
 				0678CE251A1CEBA8002A0668 /* Supporting Files */,
 				0678CE541A1CF22D002A0668 /* Parse Dashboard-Bridging-Header.h */,
+				06DE58731A1E53BB0004CC57 /* PDButton.swift */,
 			);
 			path = "Parse Dashboard";
 			sourceTree = "<group>";
@@ -294,13 +297,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0678CE4A1A1CEDB0002A0668 /* PDLoginViewController.swift in Sources */,
+				06DE58721A1D76080004CC57 /* PDMenuViewController.swift in Sources */,
 				06DE58661A1D2FB90004CC57 /* PFClass.m in Sources */,
+				06DE58761A1E555A0004CC57 /* PDAddClassViewController.swift in Sources */,
 				06DE58631A1D2FB90004CC57 /* AppInfo.m in Sources */,
 				0678CE2C1A1CEBA8002A0668 /* PDSecondViewController.swift in Sources */,
 				0678CE281A1CEBA8002A0668 /* PDAppDelegate.swift in Sources */,
 				06DE58461A1D16830004CC57 /* Model.xcdatamodeld in Sources */,
-				06DE58701A1D40660004CC57 /* PDAppSelectionViewController.swift in Sources */,
-				06DE58401A1CFF2D0004CC57 /* PDAddClassViewController.swift in Sources */,
+				06DE58741A1E53BB0004CC57 /* PDButton.swift in Sources */,
 				0678CE2A1A1CEBA8002A0668 /* PDFirstViewController.swift in Sources */,
 				06DE58421A1D04A20004CC57 /* PDRowsViewController.swift in Sources */,
 				06DE58681A1D3A840004CC57 /* PDUtitility.swift in Sources */,

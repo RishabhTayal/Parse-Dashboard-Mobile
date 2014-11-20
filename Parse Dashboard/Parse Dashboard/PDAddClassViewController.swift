@@ -31,6 +31,7 @@ class PDAddClassViewController: UIViewController, UITextFieldDelegate {
     @IBAction func cancelClicked(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     @IBAction func doneButtonClicked(sender: AnyObject) {
         delegate!.addClassDidDismiss(self, className: textField.text)
 

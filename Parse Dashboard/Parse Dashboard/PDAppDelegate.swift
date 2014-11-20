@@ -28,19 +28,45 @@ class PDAppDelegate: UIResponder, UIApplicationDelegate {
             setAddAppView()
         }
         
+        UINavigationBar.appearance().barTintColor = UIColor(red: 81/255, green: 153/255, blue: 250/255, alpha: 1.0)
+        
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().titleTextAttributes = titleDict
+        window?.tintColor = UIColor.whiteColor()
+
         return true
     }
     
     func setMainView() {
+        
         PDUtitility.setCurrentAppWithAppID(PDUtitility.getCurrentApp().appid)
         
+        
+        
         var sb: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var vc: UITabBarController = sb.instantiateViewControllerWithIdentifier("TabController") as UITabBarController
+        var vc: PDFirstViewController = sb.instantiateViewControllerWithIdentifier("PDFirstViewController") as PDFirstViewController
+        var vcNav: UINavigationController = UINavigationController(rootViewController: vc)
+        
+        var menu:PDMenuViewController = PDMenuViewController()
+        var inst: MFSideMenuContainerViewController = MFSideMenuContainerViewController.containerWithCenterViewController(vcNav, leftMenuViewController: UINavigationController(rootViewController: menu), rightMenuViewController: nil)
+        inst.menuSlideAnimationEnabled = true
         
         let frame = UIScreen.mainScreen().bounds
         window = UIWindow(frame: frame)
-        self.window?.rootViewController = vc
+        self.window?.rootViewController = inst
         window?.makeKeyAndVisible()
+
+        
+        
+        
+        
+//        var sb: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        var vc: UITabBarController = sb.instantiateViewControllerWithIdentifier("TabController") as UITabBarController
+//        
+//        let frame = UIScreen.mainScreen().bounds
+//        window = UIWindow(frame: frame)
+//        self.window?.rootViewController = vc
+//        window?.makeKeyAndVisible()
     }
     
     func setAddAppView() {

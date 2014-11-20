@@ -22,4 +22,10 @@ class PDUtitility: NSObject {
         var app: AppInfo = PDUtitility.getCurrentApp()
         Parse.setApplicationId(app.appid, clientKey: app.clientkey)
     }
+    
+   class func saveContext() {
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion { (success: Bool, error: NSError!) -> Void in
+            
+        }
+    }
 }

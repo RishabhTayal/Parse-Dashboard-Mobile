@@ -8,13 +8,15 @@
 
 import UIKit
 
-class PDFirstViewController: UIViewController, PDAddClassDelegate, UITableViewDataSource, UITableViewDelegate {
+class PDFirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PDAddClassDelegate {
     
     @IBOutlet var tableView: UITableView!
     var datasource: [NSString] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setMenuButton()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -34,12 +36,38 @@ class PDFirstViewController: UIViewController, PDAddClassDelegate, UITableViewDa
                 self.tableView.reloadData()
             })
         }
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        
+        var buttons: [AnyObject] = []
+        buttons.append(self.editButtonItem())
+        
+        var addButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addClass")
+        buttons.append(addButton)
+        self.navigationItem.rightBarButtonItems = buttons
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setMenuButton() {
+        var barButton: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        barButton.setBackgroundImage(UIImage(named: "menu-button"), forState: UIControlState.Normal)
+        barButton.frame = CGRectMake(0, 0, 30, 30)
+        barButton.addTarget(self, action: "leftSideMenuButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: barButton)
+    }
+    
+    func leftSideMenuButtonPressed(sender: UIButton) {
+        println("pressed")
+        self.menuContainerViewController.toggleLeftSideMenuCompletion(nil)
+    }
+
+    func addClass() {
+        var vc: PDAddClassViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PDAddClassViewController") as PDAddClassViewController
+        vc.delegate = self
+        var nav: UINavigationController = UINavigationController(rootViewController: vc)
+        self.presentViewController(nav, animated: true, completion: nil)
     }
     
     override func setEditing(editing: Bool, animated: Bool) {
@@ -84,8 +112,8 @@ class PDFirstViewController: UIViewController, PDAddClassDelegate, UITableViewDa
         
         app.addClasses(classes)
         
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion(nil);
-        
+//        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion(nil);
+        PDUtitility.saveContext()
         datasource.append(className)
         tableView.reloadData()
     }
@@ -107,15 +135,18 @@ class PDFirstViewController: UIViewController, PDAddClassDelegate, UITableViewDa
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            var apps: [AppInfo] = AppInfo.MR_findAll() as [AppInfo]
+            var apps: [PFClass] = PFClass.MR_findAll() as [PFClass]
             for (var i = 0; i < apps.count; i++) {
-                var app: AppInfo = apps[i] as AppInfo
-                if (app.appname == datasource[indexPath.row]) {
+                var app: PFClass = apps[i] as PFClass
+                if (app.classname == datasource[indexPath.row]) {
                     app.MR_deleteEntity()
+//                    NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion(nil)
+                    PDUtitility.saveContext()
                 }
             }
             datasource.removeAtIndex(indexPath.row)
         }
+        tableView.reloadData()
     }
 }
 

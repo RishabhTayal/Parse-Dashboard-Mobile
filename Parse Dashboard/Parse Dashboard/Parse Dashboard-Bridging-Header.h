@@ -8,3 +8,5 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "AppInfo.h"
 #import "PFClass.h"
+#import "MFSideMenuContainerViewController.h"
+#import "MFSideMenu.h"

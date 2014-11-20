@@ -25,7 +25,14 @@ class PDLoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func cancelClicked(sender: AnyObject) {
+        self.view.endEditing(true)
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func nextButtonClick(sender: AnyObject) {
+        
         //        var defaults = NSUserDefaults.standardUserDefaults();
         //        defaults.setObject(appIDTextField.text, forKey: UDAppIdKey);
         //        defaults.setObject(clientKeyTextField.text, forKey: UDClientKey);
@@ -37,7 +44,7 @@ class PDLoginViewController: UIViewController {
         appInfo.appid = appIDTextField.text
         appInfo.clientkey = clientKeyTextField.text
         appInfo.appname = appNameTextField.text
-        saveContext()
+    PDUtitility.saveContext()
         
         PDUtitility.setCurrentAppWithAppID(appInfo.appid)
         
@@ -55,9 +62,5 @@ class PDLoginViewController: UIViewController {
     }
     */
     
-    func saveContext() {
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion { (success: Bool, error: NSError!) -> Void in
-            
-        }
-    }
+    
 }
