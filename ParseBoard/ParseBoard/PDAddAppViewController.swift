@@ -17,6 +17,8 @@ class PDAddAppViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        PDUtitility.trackWithScreenName("Add App")
+        
         var pasteBoard: UIPasteboard = UIPasteboard.generalPasteboard()
         if (pasteBoard.string?.isEmpty == true) {
             println("Pasteboard empty")

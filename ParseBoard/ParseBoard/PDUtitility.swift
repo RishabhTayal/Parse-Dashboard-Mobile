@@ -11,7 +11,6 @@ import UIKit
 class PDUtitility: NSObject {
     
     class func getCurrentApp() -> AppInfo {
-        
         var app: AppInfo =  AppInfo.MR_findFirstWithPredicate(NSPredicate(format: "appid contains[cd] %@", NSUserDefaults.standardUserDefaults().stringForKey(UDCurrentAppIDKey)!)) as AppInfo
         return app
     }
@@ -29,4 +28,12 @@ class PDUtitility: NSObject {
             
         }
     }
+    
+//    class func trackWithScreenName(screnName: String) {
+//        
+//    }
+//    
+//    class func trackEventWithCategory(category: String, action: String, label: String, value: NSNumber) {
+//        
+//    }
 }

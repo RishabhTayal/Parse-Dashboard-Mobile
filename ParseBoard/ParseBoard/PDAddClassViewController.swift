@@ -22,6 +22,8 @@ class PDAddClassViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad();
         
+//        PDUtitility.trackWithScreenName("Add Class")
+        
         doneButton.enabled = false
         
         var paddingView: UIView = UIView(frame: CGRectMake(0, 0, 5, 20));

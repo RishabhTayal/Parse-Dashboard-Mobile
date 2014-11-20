@@ -22,6 +22,12 @@ class PDAppDelegate: UIResponder, UIApplicationDelegate {
         
         MagicalRecord.setupCoreDataStackWithStoreNamed("Model")
         
+        GAI.sharedInstance().trackUncaughtExceptions = false
+        
+        GAI.sharedInstance().dispatchInterval = 20
+        
+        GAI.sharedInstance().trackerWithTrackingId("UA-40631521-13")
+        
         if (AppInfo.MR_numberOfEntities() != 0) {
             setMainView()
         } else {
@@ -33,7 +39,7 @@ class PDAppDelegate: UIResponder, UIApplicationDelegate {
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().titleTextAttributes = titleDict
         window?.tintColor = UIColor.whiteColor()
-
+        
         return true
     }
     
