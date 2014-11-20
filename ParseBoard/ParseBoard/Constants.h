@@ -9,6 +9,14 @@
 #ifndef Parse_Dashboard_Constants_h
 #define Parse_Dashboard_Constants_h
 
+#ifdef DEBUG
+#define DEBUGMODE YES
+
+#else
+#define DEBUGMODE NO
+
+#endif
+
 //NSUserDefaults Keys
 #define UDCurrentAppIDKey @"currentAppID"
 

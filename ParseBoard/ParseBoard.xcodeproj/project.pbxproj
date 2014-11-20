@@ -31,6 +31,8 @@
 		06DE587D1A1E5FCE0004CC57 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DE587A1A1E5FCE0004CC57 /* Bolts.framework */; };
 		06DE587E1A1E5FCE0004CC57 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DE587B1A1E5FCE0004CC57 /* Parse.framework */; };
 		06DE587F1A1E5FCE0004CC57 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DE587C1A1E5FCE0004CC57 /* ParseUI.framework */; };
+		06DE58811A1E67A10004CC57 /* PDDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE58801A1E67A10004CC57 /* PDDataViewController.swift */; };
+		06DE58841A1E77100004CC57 /* PDWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE58831A1E77100004CC57 /* PDWebViewController.swift */; };
 		23EA8BA046E3C1F484A1466D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96AEC7C5F66F4F9FD1B7B0B9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		06DE587A1A1E5FCE0004CC57 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		06DE587B1A1E5FCE0004CC57 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		06DE587C1A1E5FCE0004CC57 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		06DE58801A1E67A10004CC57 /* PDDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDDataViewController.swift; sourceTree = "<group>"; };
+		06DE58831A1E77100004CC57 /* PDWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDWebViewController.swift; sourceTree = "<group>"; };
 		435BD845ED1C43A8D15F42D3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		96AEC7C5F66F4F9FD1B7B0B9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE0B227905CAE6816C565BB2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,22 +114,22 @@
 		0678CE241A1CEBA8002A0668 /* Parse Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				06DE58671A1D3A840004CC57 /* PDUtitility.swift */,
-				06DE58751A1E555A0004CC57 /* PDAddClassViewController.swift */,
+				06DE58821A1E69C10004CC57 /* Other */,
 				0678CE271A1CEBA8002A0668 /* PDAppDelegate.swift */,
+				06DE58711A1D76080004CC57 /* PDMenuViewController.swift */,
+				0678CE491A1CEDB0002A0668 /* PDAddAppViewController.swift */,
+				06DE58751A1E555A0004CC57 /* PDAddClassViewController.swift */,
 				0678CE291A1CEBA8002A0668 /* PDFirstViewController.swift */,
 				06DE58411A1D04A20004CC57 /* PDRowsViewController.swift */,
-				0678CE491A1CEDB0002A0668 /* PDAddAppViewController.swift */,
-				06DE58711A1D76080004CC57 /* PDMenuViewController.swift */,
+				06DE58801A1E67A10004CC57 /* PDDataViewController.swift */,
+				06DE58831A1E77100004CC57 /* PDWebViewController.swift */,
 				06DE58771A1E5C1E0004CC57 /* MenuTableFooter.xib */,
-				06DE58431A1D0ABE0004CC57 /* Constants.h */,
 				0678CE2D1A1CEBA8002A0668 /* Main.storyboard */,
 				06DE58441A1D16830004CC57 /* Model.xcdatamodeld */,
 				06DE586E1A1D3F2E0004CC57 /* Model */,
 				0678CE301A1CEBA9002A0668 /* Images.xcassets */,
 				0678CE321A1CEBA9002A0668 /* LaunchScreen.xib */,
 				0678CE251A1CEBA8002A0668 /* Supporting Files */,
-				06DE58731A1E53BB0004CC57 /* PDButton.swift */,
 			);
 			name = "Parse Dashboard";
 			path = ParseBoard;
@@ -165,6 +169,16 @@
 				06DE58621A1D2FB90004CC57 /* AppInfo.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		06DE58821A1E69C10004CC57 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				06DE58431A1D0ABE0004CC57 /* Constants.h */,
+				06DE58731A1E53BB0004CC57 /* PDButton.swift */,
+				06DE58671A1D3A840004CC57 /* PDUtitility.swift */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 		C0C421741AE82D41C4130996 /* Pods */ = {
@@ -304,6 +318,8 @@
 				06DE58761A1E555A0004CC57 /* PDAddClassViewController.swift in Sources */,
 				06DE58631A1D2FB90004CC57 /* AppInfo.m in Sources */,
 				0678CE281A1CEBA8002A0668 /* PDAppDelegate.swift in Sources */,
+				06DE58811A1E67A10004CC57 /* PDDataViewController.swift in Sources */,
+				06DE58841A1E77100004CC57 /* PDWebViewController.swift in Sources */,
 				06DE58461A1D16830004CC57 /* Model.xcdatamodeld in Sources */,
 				06DE58741A1E53BB0004CC57 /* PDButton.swift in Sources */,
 				0678CE2A1A1CEBA8002A0668 /* PDFirstViewController.swift in Sources */,

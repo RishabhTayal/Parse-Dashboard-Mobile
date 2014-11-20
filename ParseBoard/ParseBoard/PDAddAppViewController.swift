@@ -17,12 +17,28 @@ class PDAddAppViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        var pasteBoard: UIPasteboard = UIPasteboard.generalPasteboard()
+        if (pasteBoard.string?.isEmpty == true) {
+            println("Pasteboard empty")
+        } else {
+            println("Pasteboard not empty")
+            
+            UIAlertView(title: "Hey!!!", message: "There is something in your Pasteboard. If it's your AppID or ClientKey you can paste it in the fields", delegate: nil, cancelButtonTitle: "Got it").show()
+        }
+       // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func getKeysClicked(sender: AnyObject) {
+        var webVC: PDWebViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PDWebViewController") as PDWebViewController
+        webVC.url = "https://www.parse.com/apps"
+        
+        var nav: UINavigationController = UINavigationController(rootViewController: webVC)
+        self.presentViewController(nav, animated: true, completion: nil)
     }
     
     @IBAction func cancelClicked(sender: AnyObject) {
