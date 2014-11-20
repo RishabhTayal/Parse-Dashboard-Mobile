@@ -511,6 +511,7 @@
 				PROVISIONING_PROFILE = "12e9fdc2-f9f9-429e-8bda-9a570fabcc55";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseBoard/ParseBoard-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -535,6 +536,7 @@
 				PRODUCT_NAME = ParseBoard;
 				PROVISIONING_PROFILE = "f26572e6-efe8-4d6e-bffb-2d293622deb4";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseBoard/ParseBoard-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
