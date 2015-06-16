@@ -14,6 +14,7 @@
 
 @dynamic appid;
 @dynamic clientkey;
+@dynamic masterKey;
 @dynamic appname;
 @dynamic classes;
 

@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSString * appid;
 @property (nonatomic, retain) NSString * clientkey;
+@property (nonatomic, retain) NSString * masterKey;
 @property (nonatomic, retain) NSString * appname;
 @property (nonatomic, retain) NSSet *classes;
 @end

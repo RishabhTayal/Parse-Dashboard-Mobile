@@ -17,7 +17,7 @@ class PDMenuViewController: UITableViewController, PDMenuFooterDelegate {
         
         apps = AppInfo.MR_findAll() as! [AppInfo]
         
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+//        self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
     
     override func didReceiveMemoryWarning() {
@@ -25,10 +25,10 @@ class PDMenuViewController: UITableViewController, PDMenuFooterDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func setEditing(editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        tableView.setEditing(editing, animated: true)
-    }
+//    override func setEditing(editing: Bool, animated: Bool) {
+//        super.setEditing(editing, animated: animated)
+//        tableView.setEditing(editing, animated: true)
+//    }
     
     // MARK: - Table view data source
     
@@ -66,7 +66,7 @@ class PDMenuViewController: UITableViewController, PDMenuFooterDelegate {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return apps.count + 1
+        return apps.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -77,7 +77,6 @@ class PDMenuViewController: UITableViewController, PDMenuFooterDelegate {
         }
         
         if (indexPath.row == apps.count) {
-            cell?.textLabel!.text = "Add new app"
             cell?.textLabel!.textAlignment = NSTextAlignment.Center
         } else {
             cell?.textLabel!.text = (apps[indexPath.row] as AppInfo).appname
@@ -101,35 +100,28 @@ class PDMenuViewController: UITableViewController, PDMenuFooterDelegate {
         }
         
         self.menuContainerViewController.setMenuState(MFSideMenuStateClosed, completion: { () -> Void in
-            if indexPath.row == self.apps.count {
-                var viewC: UIViewController = nav.viewControllers[0] as! UIViewController
-                
-                var sb: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                var vc: PDLoginViewController = sb.instantiateViewControllerWithIdentifier("PDLoginViewController") as! PDLoginViewController
-                viewC.presentViewController(vc, animated: true, completion: nil)
-            }
         })
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if indexPath.row == apps.count {
-            return false
-        }
-        return true
-    }
-    
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.Delete
-    }
-    
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            
-            var app: AppInfo = apps[indexPath.row] as AppInfo
-            app.MR_deleteEntity()
-            PDUtitility.saveContext()
-            apps.removeAtIndex(indexPath.row)
-        }
-        tableView.reloadData()
-    }
+//    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        if indexPath.row == apps.count {
+//            return false
+//        }
+//        return true
+//    }
+//    
+//    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+//        return UITableViewCellEditingStyle.Delete
+//    }
+//    
+//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+//            
+//            var app: AppInfo = apps[indexPath.row] as AppInfo
+//            app.MR_deleteEntity()
+//            PDUtitility.saveContext()
+//            apps.removeAtIndex(indexPath.row)
+//        }
+//        tableView.reloadData()
+//    }
 }

@@ -17,20 +17,11 @@ class PDLoginViewController: UIViewController {
         super.viewDidLoad()
         
         //        PDUtitility.trackWithScreenName("Add App")
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func getKeysClicked(sender: AnyObject) {
-        var webVC: PDWebViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PDWebViewController") as! PDWebViewController
-        webVC.url = "https://www.parse.com/apps"
-        
-        var nav: UINavigationController = UINavigationController(rootViewController: webVC)
-        self.presentViewController(nav, animated: true, completion: nil)
     }
     
     @IBAction func cancelClicked(sender: AnyObject) {
@@ -51,7 +42,22 @@ class PDLoginViewController: UIViewController {
             println(result)
             var appDelegate = UIApplication.sharedApplication().delegate as! PDAppDelegate
             var results: [AnyObject] = result["results"] as! [AnyObject]
-            appDelegate.setMainViewWithApps(results)
+            
+            
+            for app in results {
+                var appInfo: AppInfo = AppInfo.MR_createEntity() as! AppInfo
+                appInfo.appid = app["applicationId"] as! String
+                appInfo.clientkey = app["clientKey"] as! String
+                appInfo.appname = app["appName"] as! String
+                appInfo.masterKey = app["masterKey"] as! String
+                PDUtitility.saveContext()
+            }
+            
+            
+            var app: AppInfo = AppInfo.MR_findFirst() as! AppInfo
+            PDUtitility.setCurrentAppWithAppID(app.appid)
+            
+            appDelegate.setMainView()
         }
         
     }

@@ -17,33 +17,57 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         
         setMenuButton()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         
-        self.datasource = []
-        var appInfo: AppInfo = PDUtitility.getCurrentApp()
-        
-        self.title = appInfo.appname
-        
-        var classes: NSMutableSet = NSMutableSet(set: appInfo.classes)
-        
-        if classes.count != 0 {
-            classes.enumerateObjectsUsingBlock({ (object: AnyObject!, stop: UnsafeMutablePointer) -> Void in
-                var pfClass: PFClass = object as! PFClass
-                self.datasource.append(pfClass.classname)
-                self.tableView.reloadData()
-            })
+        var app: AppInfo = PDUtitility.getCurrentApp()
+        var request: NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/schemas")!)
+        request.addValue(app.appid, forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue(app.masterKey, forHTTPHeaderField: "X-Parse-Master-Key")
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (r, d, e) -> Void in
+            var result: NSDictionary = NSJSONSerialization.JSONObjectWithData(d, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+            println(result)
+            var results: [AnyObject] = result["results"] as! [AnyObject]
+            
+            PFClass.MR_truncateAll()
+            
+            var classes: NSMutableSet? = NSMutableSet()
+            for classObj in results {
+                
+                var newClass: PFClass = PFClass.MR_createEntity() as! PFClass
+                newClass.app = app
+                newClass.classname = classObj["className"] as! String
+                
+                classes?.addObject(newClass)
+                self.datasource.append(newClass.classname)
+                PDUtitility.saveContext()
+            }
+            app.classes = NSSet(set: classes!) as Set<NSObject>
+            //            app.addClasses(classes)
+            
+            //            datasource.append(className)
+            self.tableView.reloadData()
+            
+            
         }
-        
-        var buttons: [AnyObject] = []
-        var addButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addClass")
-        buttons.append(addButton)
-        buttons.append(self.editButtonItem())
-        
-        self.navigationItem.rightBarButtonItems = buttons
     }
+//    
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        self.datasource = []
+//        var appInfo: AppInfo = PDUtitility.getCurrentApp()
+//        
+//        self.title = appInfo.appname
+//        
+//        var classes: NSMutableSet = NSMutableSet(set: appInfo.classes)
+//        
+//        if classes.count != 0 {
+//            classes.enumerateObjectsUsingBlock({ (object: AnyObject!, stop: UnsafeMutablePointer) -> Void in
+//                var pfClass: PFClass = object as! PFClass
+//                self.datasource.append(pfClass.classname)
+//                self.tableView.reloadData()
+//            })
+//        }
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -63,23 +87,23 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
         self.menuContainerViewController.toggleLeftSideMenuCompletion(nil)
     }
     
-    func addClass() {
-        var vc: PDAddClassViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PDAddClassViewController") as! PDAddClassViewController
-        vc.delegate = self
-        var nav: UINavigationController = UINavigationController(rootViewController: vc)
-        self.presentViewController(nav, animated: true, completion: nil)
-    }
+    //    func addClass() {
+    //        var vc: PDAddClassViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PDAddClassViewController") as! PDAddClassViewController
+    //        vc.delegate = self
+    //        var nav: UINavigationController = UINavigationController(rootViewController: vc)
+    //        self.presentViewController(nav, animated: true, completion: nil)
+    //    }
     
-    override func setEditing(editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        
-        tableView.setEditing(editing, animated: animated)
-        if (editing) {
-            self.navigationItem.rightBarButtonItem?.enabled = false
-        } else {
-            self.navigationItem.rightBarButtonItem?.enabled = true
-        }
-    }
+    //    override func setEditing(editing: Bool, animated: Bool) {
+    //        super.setEditing(editing, animated: animated)
+    //
+    //        tableView.setEditing(editing, animated: animated)
+    //        if (editing) {
+    //            self.navigationItem.rightBarButtonItem?.enabled = false
+    //        } else {
+    //            self.navigationItem.rightBarButtonItem?.enabled = true
+    //        }
+    //    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "addClassSegue") {
@@ -97,9 +121,7 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func addClassDidDismiss(controller: PDAddClassViewController, className: String) {
-        println(className)
         
-        //        let classes: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey(UDClassNames)
         var app: AppInfo = PDUtitility.getCurrentApp()
         var classes: NSMutableSet? = NSMutableSet(set: app.classes)
         
@@ -110,7 +132,7 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
         
         classes?.addObject(newClass)
         
-//        app.addClasses(classes)
+        //        app.addClasses(classes)
         
         //        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion(nil);
         PDUtitility.saveContext()
@@ -128,33 +150,33 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        var className = datasource[indexPath.row]
-        if className == "_User" {
-            return false
-        }
-        return true
-    }
-    
-    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.Delete;
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            var apps: [PFClass] = PFClass.MR_findAll() as! [PFClass]
-            for (var i = 0; i < apps.count; i++) {
-                var app: PFClass = apps[i] as PFClass
-                if (app.classname == datasource[indexPath.row]) {
-                    app.MR_deleteEntity()
-                    //                    NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion(nil)
-                    PDUtitility.saveContext()
-                }
-            }
-            datasource.removeAtIndex(indexPath.row)
-        }
-        tableView.reloadData()
-    }
+    //    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    //        var className = datasource[indexPath.row]
+    //        if className == "_User" {
+    //            return false
+    //        }
+    //        return true
+    //    }
+    //
+    //    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    //        return UITableViewCellEditingStyle.Delete;
+    //    }
+    //
+    //    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    //
+    //        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+    //            var apps: [PFClass] = PFClass.MR_findAll() as! [PFClass]
+    //            for (var i = 0; i < apps.count; i++) {
+    //                var app: PFClass = apps[i] as PFClass
+    //                if (app.classname == datasource[indexPath.row]) {
+    //                    app.MR_deleteEntity()
+    //                    //                    NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion(nil)
+    //                    PDUtitility.saveContext()
+    //                }
+    //            }
+    //            datasource.removeAtIndex(indexPath.row)
+    //        }
+    //        tableView.reloadData()
+    //    }
 }
 
