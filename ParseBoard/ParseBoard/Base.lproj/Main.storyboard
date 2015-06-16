@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -273,10 +273,10 @@
             </objects>
             <point key="canvasLocation" x="2157" y="-382"/>
         </scene>
-        <!--Add App View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="i45-Hd-Ghj">
             <objects>
-                <viewController storyboardIdentifier="PDAddAppViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T1L-vO-f1N" customClass="PDAddAppViewController" customModule="ParseBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PDLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T1L-vO-f1N" customClass="PDLoginViewController" customModule="ParseBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hOs-a8-ZFY"/>
                         <viewControllerLayoutGuide type="bottom" id="Cya-HZ-bex"/>
@@ -285,7 +285,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Application ID" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ucx-9t-Q9N">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="rtayal11@gmail.com" placeholder="Enter Parse Email" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ucx-9t-Q9N">
                                 <rect key="frame" x="147" y="122" width="308" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="308" id="ZwP-sN-hVV"/>
@@ -294,7 +294,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Client Key" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MoA-T7-saN">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="gotohell" placeholder="Enter Password" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MoA-T7-saN">
                                 <rect key="frame" x="126" y="207" width="349" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="349" id="4Eu-pu-v84"/>
@@ -303,56 +303,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter app name" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bRJ-Rd-sWa">
-                                <rect key="frame" x="164" y="44" width="273" height="49"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="607-wJ-Nrr"/>
-                                    <constraint firstAttribute="width" constant="273" id="9xj-Yh-Gez"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Exo-aK-UFu" customClass="PDButton" customModule="ParseBoard" customModuleProvider="target">
-                                <rect key="frame" x="305" y="277" width="193" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="4Yb-cH-13h"/>
-                                    <constraint firstAttribute="height" constant="45" id="f45-FI-ZrR"/>
-                                    <constraint firstAttribute="width" constant="193" id="ir0-ZI-4y4"/>
-                                </constraints>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelClicked:" destination="T1L-vO-f1N" eventType="touchUpInside" id="aqh-HF-8Nr"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPL-nP-WDw" customClass="PDButton" customModule="ParseBoard" customModuleProvider="target">
-                                <rect key="frame" x="102" y="277" width="193" height="45"/>
+                                <rect key="frame" x="36" y="277" width="528" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="193" id="1Tg-PI-2iP"/>
                                     <constraint firstAttribute="height" constant="45" id="DTw-DH-tB7"/>
                                 </constraints>
-                                <state key="normal" title="Save">
+                                <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1Tg-PI-2iP"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="nextButtonClick:" destination="T1L-vO-f1N" eventType="touchUpInside" id="5fP-oi-DcW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLV-Z9-szo" customClass="PDButton" customModule="ParseBoard" customModuleProvider="target">
-                                <rect key="frame" x="204" y="340" width="193" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="6cR-tc-8iK"/>
-                                    <constraint firstAttribute="width" constant="193" id="sAb-X4-SVe"/>
-                                </constraints>
-                                <state key="normal" title="Get keys">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="getKeysClicked:" destination="T1L-vO-f1N" eventType="touchUpInside" id="mfG-Po-ZLL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -360,27 +327,27 @@
                         <constraints>
                             <constraint firstItem="oPL-nP-WDw" firstAttribute="top" secondItem="MoA-T7-saN" secondAttribute="bottom" constant="20" id="8jC-Ij-CSn"/>
                             <constraint firstItem="MoA-T7-saN" firstAttribute="centerX" secondItem="oPL-nP-WDw" secondAttribute="centerX" constant="102" id="D3v-yo-QzG"/>
-                            <constraint firstAttribute="centerX" secondItem="bLV-Z9-szo" secondAttribute="centerX" constant="-0.5" id="G3F-cR-2us"/>
-                            <constraint firstItem="bRJ-Rd-sWa" firstAttribute="top" secondItem="hOs-a8-ZFY" secondAttribute="bottom" constant="24" id="JPm-8g-bdH"/>
                             <constraint firstItem="MoA-T7-saN" firstAttribute="top" secondItem="ucx-9t-Q9N" secondAttribute="bottom" constant="34" id="VSO-Lo-roY"/>
-                            <constraint firstItem="Exo-aK-UFu" firstAttribute="leading" secondItem="oPL-nP-WDw" secondAttribute="trailing" constant="10" id="VWr-0o-4pX"/>
-                            <constraint firstItem="oPL-nP-WDw" firstAttribute="baseline" secondItem="Exo-aK-UFu" secondAttribute="baseline" id="dj5-RE-5Ou"/>
-                            <constraint firstAttribute="centerX" secondItem="bRJ-Rd-sWa" secondAttribute="centerX" id="szK-UP-dqr"/>
-                            <constraint firstItem="bLV-Z9-szo" firstAttribute="top" secondItem="oPL-nP-WDw" secondAttribute="bottom" constant="18" id="tDo-BQ-CCC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oPL-nP-WDw" secondAttribute="trailing" constant="20" id="dfy-QK-cLT"/>
+                            <constraint firstItem="oPL-nP-WDw" firstAttribute="leading" secondItem="Feh-Sf-NiV" secondAttribute="leadingMargin" constant="20" id="kPV-fG-qDA"/>
                             <constraint firstAttribute="centerX" secondItem="ucx-9t-Q9N" secondAttribute="centerX" constant="-1" id="vPZ-0F-NTi"/>
                             <constraint firstAttribute="centerX" secondItem="MoA-T7-saN" secondAttribute="centerX" id="xtX-yL-oTD"/>
                             <constraint firstItem="ucx-9t-Q9N" firstAttribute="top" secondItem="hOs-a8-ZFY" secondAttribute="bottom" constant="102" id="znl-hw-VHd"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="D3v-yo-QzG"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="appIDTextField" destination="ucx-9t-Q9N" id="O97-UN-TUk"/>
-                        <outlet property="appNameTextField" destination="bRJ-Rd-sWa" id="Ohu-ql-2XE"/>
-                        <outlet property="clientKeyTextField" destination="MoA-T7-saN" id="7B0-be-rrU"/>
+                        <outlet property="passwordTF" destination="MoA-T7-saN" id="dMG-3O-tJh"/>
+                        <outlet property="usernameTF" destination="ucx-9t-Q9N" id="IF8-jl-jiS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tFJ-pE-7o6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1442" y="-1144"/>
+            <point key="canvasLocation" x="1071" y="-1168"/>
         </scene>
     </scenes>
     <resources>

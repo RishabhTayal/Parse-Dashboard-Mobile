@@ -29,7 +29,7 @@ class PDAppDelegate: UIResponder, UIApplicationDelegate {
         GAI.sharedInstance().trackerWithTrackingId("UA-40631521-13")
         
         if (AppInfo.MR_numberOfEntities() != 0) {
-            setMainView()
+//            setMainView()
         } else {
             setAddAppView()
         }
@@ -37,17 +37,17 @@ class PDAppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor(red: 81/255, green: 153/255, blue: 250/255, alpha: 1.0)
         
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        UINavigationBar.appearance().titleTextAttributes = titleDict
+        UINavigationBar.appearance().titleTextAttributes = titleDict as [NSObject : AnyObject]
         
         return true
     }
     
-    func setMainView() {
+    func setMainViewWithApps(apps: [AnyObject]) {
         
         PDUtitility.setCurrentAppWithAppID(PDUtitility.getCurrentApp().appid)
         
         var sb: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var vc: PDFirstViewController = sb.instantiateViewControllerWithIdentifier("PDFirstViewController") as PDFirstViewController
+        var vc: PDFirstViewController = sb.instantiateViewControllerWithIdentifier("PDFirstViewController") as! PDFirstViewController
         var vcNav: UINavigationController = UINavigationController(rootViewController: vc)
         
         var menu:PDMenuViewController = PDMenuViewController()
@@ -64,7 +64,7 @@ class PDAppDelegate: UIResponder, UIApplicationDelegate {
     
     func setAddAppView() {
         var sb: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var vc: PDAddAppViewController = sb.instantiateViewControllerWithIdentifier("PDAddAppViewController") as PDAddAppViewController
+        var vc: PDLoginViewController = sb.instantiateViewControllerWithIdentifier("PDLoginViewController") as! PDLoginViewController
         
         let frame = UIScreen.mainScreen().bounds
         window = UIWindow(frame: frame)

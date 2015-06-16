@@ -29,11 +29,11 @@ class PDDataViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
-        var key: String = datasource.allKeys[indexPath.row] as String
+        var key: String = datasource.allKeys[indexPath.row] as! String
         
-        cell.textLabel.text = key
+        cell.textLabel!.text = key
         cell.detailTextLabel?.text = datasource.objectForKey(key) as? String
         
         return cell

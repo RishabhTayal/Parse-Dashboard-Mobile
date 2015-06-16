@@ -11,7 +11,7 @@ import UIKit
 class PDUtitility: NSObject {
     
     class func getCurrentApp() -> AppInfo {
-        var app: AppInfo =  AppInfo.MR_findFirstWithPredicate(NSPredicate(format: "appid contains[cd] %@", NSUserDefaults.standardUserDefaults().stringForKey(UDCurrentAppIDKey)!)) as AppInfo
+        var app: AppInfo =  AppInfo.MR_findFirstWithPredicate(NSPredicate(format: "appid contains[cd] %@", NSUserDefaults.standardUserDefaults().stringForKey(UDCurrentAppIDKey)!)) as! AppInfo
         return app
     }
     

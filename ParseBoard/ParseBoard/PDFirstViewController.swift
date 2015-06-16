@@ -27,11 +27,11 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
         
         self.title = appInfo.appname
         
-        var classes: NSMutableSet = appInfo.classes as NSMutableSet
+        var classes: NSMutableSet = NSMutableSet(set: appInfo.classes)
         
         if classes.count != 0 {
             classes.enumerateObjectsUsingBlock({ (object: AnyObject!, stop: UnsafeMutablePointer) -> Void in
-                var pfClass: PFClass = object as PFClass
+                var pfClass: PFClass = object as! PFClass
                 self.datasource.append(pfClass.classname)
                 self.tableView.reloadData()
             })
@@ -51,7 +51,7 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func setMenuButton() {
-        var barButton: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        var barButton: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         barButton.setBackgroundImage(UIImage(named: "menu-button"), forState: UIControlState.Normal)
         barButton.frame = CGRectMake(0, 0, 30, 30)
         barButton.addTarget(self, action: "leftSideMenuButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -64,7 +64,7 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func addClass() {
-        var vc: PDAddClassViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PDAddClassViewController") as PDAddClassViewController
+        var vc: PDAddClassViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PDAddClassViewController") as! PDAddClassViewController
         vc.delegate = self
         var nav: UINavigationController = UINavigationController(rootViewController: vc)
         self.presentViewController(nav, animated: true, completion: nil)
@@ -83,14 +83,14 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "addClassSegue") {
-            var addClassVC: PDAddClassViewController = (segue.destinationViewController as UINavigationController).viewControllers[0] as PDAddClassViewController
+            var addClassVC: PDAddClassViewController = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! PDAddClassViewController
             addClassVC.delegate = self
         }
         if (segue.identifier == "showRowsSegue") {
-            var rowsVC: PDRowsViewController = segue.destinationViewController as PDRowsViewController
+            var rowsVC: PDRowsViewController = segue.destinationViewController as! PDRowsViewController
             
             var indexPath: NSIndexPath = tableView.indexPathForSelectedRow()!
-            rowsVC.className = datasource[indexPath.row]
+            rowsVC.className = datasource[indexPath.row] as String
             
             tableView.deselectRowAtIndexPath(tableView.indexPathForSelectedRow()!, animated: true)
         }
@@ -101,16 +101,16 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
         
         //        let classes: AnyObject? = NSUserDefaults.standardUserDefaults().objectForKey(UDClassNames)
         var app: AppInfo = PDUtitility.getCurrentApp()
-        var classes: NSMutableSet? = app.classes as? NSMutableSet
+        var classes: NSMutableSet? = NSMutableSet(set: app.classes)
         
         
-        var newClass: PFClass = PFClass.MR_createEntity() as PFClass
+        var newClass: PFClass = PFClass.MR_createEntity() as! PFClass
         newClass.app = app
         newClass.classname = className
         
         classes?.addObject(newClass)
         
-        app.addClasses(classes)
+//        app.addClasses(classes)
         
         //        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion(nil);
         PDUtitility.saveContext()
@@ -123,8 +123,8 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
-        cell.textLabel.text = datasource[indexPath.row]
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        cell.textLabel!.text = datasource[indexPath.row] as String
         return cell
     }
     
@@ -143,7 +143,7 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            var apps: [PFClass] = PFClass.MR_findAll() as [PFClass]
+            var apps: [PFClass] = PFClass.MR_findAll() as! [PFClass]
             for (var i = 0; i < apps.count; i++) {
                 var app: PFClass = apps[i] as PFClass
                 if (app.classname == datasource[indexPath.row]) {

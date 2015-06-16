@@ -27,7 +27,7 @@ class PDRowsViewController: UIViewController, UITableViewDataSource, UITableView
             if objects != nil {
                 self.datasource = objects
                 
-                self.title = NSString(format: "%@ (%d)", self.className, objects.count)
+                self.title = NSString(format: "%@ (%d)", self.className, objects.count) as String
                 self.tableView.reloadData()
             } else {
                 UIAlertView(title: "Error", message: "Could not find any objects for the class.", delegate: nil, cancelButtonTitle: "Ok").show()
@@ -42,11 +42,11 @@ class PDRowsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
-        var data: PFObject = datasource[indexPath.row] as PFObject
+        var data: PFObject = datasource[indexPath.row] as! PFObject
 //        let string = data["objectId"] as String
-        cell.textLabel.text = data.objectId
+        cell.textLabel!.text = data.objectId
 
         return cell
     }
@@ -76,7 +76,7 @@ class PDRowsViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "dataSegue" {
-            var vc: PDDataViewController = segue.destinationViewController as PDDataViewController
+            var vc: PDDataViewController = segue.destinationViewController as! PDDataViewController
             var indexPath: NSIndexPath = tableView.indexPathForSelectedRow()!
             vc.datasource = datasource[indexPath.row]
         }

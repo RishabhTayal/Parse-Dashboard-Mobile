@@ -12,7 +12,7 @@
 		0678CE2F1A1CEBA8002A0668 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0678CE2D1A1CEBA8002A0668 /* Main.storyboard */; };
 		0678CE311A1CEBA9002A0668 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0678CE301A1CEBA9002A0668 /* Images.xcassets */; };
 		0678CE341A1CEBA9002A0668 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0678CE321A1CEBA9002A0668 /* LaunchScreen.xib */; };
-		0678CE4A1A1CEDB0002A0668 /* PDAddAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0678CE491A1CEDB0002A0668 /* PDAddAppViewController.swift */; };
+		0678CE4A1A1CEDB0002A0668 /* PDLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0678CE491A1CEDB0002A0668 /* PDLoginViewController.swift */; };
 		0678CE581A1CF850002A0668 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0678CE571A1CF850002A0668 /* AudioToolbox.framework */; };
 		0678CE5A1A1CF869002A0668 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0678CE591A1CF869002A0668 /* SystemConfiguration.framework */; };
 		0678CE5C1A1CF889002A0668 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0678CE5B1A1CF889002A0668 /* MobileCoreServices.framework */; };
@@ -50,7 +50,7 @@
 		0678CE2E1A1CEBA8002A0668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0678CE301A1CEBA9002A0668 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0678CE331A1CEBA9002A0668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		0678CE491A1CEDB0002A0668 /* PDAddAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDAddAppViewController.swift; sourceTree = "<group>"; };
+		0678CE491A1CEDB0002A0668 /* PDLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDLoginViewController.swift; sourceTree = "<group>"; };
 		0678CE571A1CF850002A0668 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0678CE591A1CF869002A0668 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0678CE5B1A1CF889002A0668 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -144,7 +144,7 @@
 				06DE58821A1E69C10004CC57 /* Other */,
 				0678CE271A1CEBA8002A0668 /* PDAppDelegate.swift */,
 				06DE58711A1D76080004CC57 /* PDMenuViewController.swift */,
-				0678CE491A1CEDB0002A0668 /* PDAddAppViewController.swift */,
+				0678CE491A1CEDB0002A0668 /* PDLoginViewController.swift */,
 				06DE58751A1E555A0004CC57 /* PDAddClassViewController.swift */,
 				0678CE291A1CEBA8002A0668 /* PDFirstViewController.swift */,
 				06DE58411A1D04A20004CC57 /* PDRowsViewController.swift */,
@@ -284,6 +284,7 @@
 				TargetAttributes = {
 					0678CE211A1CEBA8002A0668 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = CEBY93VF85;
 					};
 				};
 			};
@@ -371,7 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0678CE4A1A1CEDB0002A0668 /* PDAddAppViewController.swift in Sources */,
+				0678CE4A1A1CEDB0002A0668 /* PDLoginViewController.swift in Sources */,
 				06DE58721A1D76080004CC57 /* PDMenuViewController.swift in Sources */,
 				06DE58861A1E7B270004CC57 /* PDMenuTableFooter.swift in Sources */,
 				06DE58661A1D2FB90004CC57 /* PFClass.m in Sources */,
@@ -495,7 +496,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -508,7 +510,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = ParseBoard;
-				PROVISIONING_PROFILE = "12e9fdc2-f9f9-429e-8bda-9a570fabcc55";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseBoard/ParseBoard-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -521,7 +523,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -534,7 +537,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = ParseBoard;
-				PROVISIONING_PROFILE = "f26572e6-efe8-4d6e-bffb-2d293622deb4";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseBoard/ParseBoard-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

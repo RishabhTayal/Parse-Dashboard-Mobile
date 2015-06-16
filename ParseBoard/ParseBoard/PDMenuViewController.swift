@@ -15,7 +15,7 @@ class PDMenuViewController: UITableViewController, PDMenuFooterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        apps = AppInfo.MR_findAll() as [AppInfo]
+        apps = AppInfo.MR_findAll() as! [AppInfo]
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
@@ -33,7 +33,7 @@ class PDMenuViewController: UITableViewController, PDMenuFooterDelegate {
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        var footerView: PDMenuTableFooter = NSBundle.mainBundle().loadNibNamed("MenuTableFooter", owner: self, options: nil)[0] as PDMenuTableFooter
+        var footerView: PDMenuTableFooter = NSBundle.mainBundle().loadNibNamed("MenuTableFooter", owner: self, options: nil)[0] as! PDMenuTableFooter
         footerView.delegate = self
         footerView.frame = CGRectMake(0, 0, tableView.frame.size.width, footerView.frame.size.height)
         return footerView;
@@ -77,17 +77,17 @@ class PDMenuViewController: UITableViewController, PDMenuFooterDelegate {
         }
         
         if (indexPath.row == apps.count) {
-            cell?.textLabel.text = "Add new app"
-            cell?.textLabel.textAlignment = NSTextAlignment.Center
+            cell?.textLabel!.text = "Add new app"
+            cell?.textLabel!.textAlignment = NSTextAlignment.Center
         } else {
-            cell?.textLabel.text = (apps[indexPath.row] as AppInfo).appname
+            cell?.textLabel!.text = (apps[indexPath.row] as AppInfo).appname
         }
         
         return cell!
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var nav: UINavigationController = self.menuContainerViewController.centerViewController as UINavigationController
+        var nav: UINavigationController = self.menuContainerViewController.centerViewController as! UINavigationController
         
         if (indexPath.row == apps.count) {
             
@@ -96,16 +96,16 @@ class PDMenuViewController: UITableViewController, PDMenuFooterDelegate {
             PDUtitility.setCurrentAppWithAppID(app.appid)
             
             var array:[AnyObject] = []
-            var vc : PDFirstViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PDFirstViewController") as PDFirstViewController
+            var vc : PDFirstViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PDFirstViewController") as! PDFirstViewController
             nav.viewControllers = [vc]
         }
         
         self.menuContainerViewController.setMenuState(MFSideMenuStateClosed, completion: { () -> Void in
             if indexPath.row == self.apps.count {
-                var viewC: UIViewController = nav.viewControllers[0] as UIViewController
+                var viewC: UIViewController = nav.viewControllers[0] as! UIViewController
                 
                 var sb: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                var vc: PDAddAppViewController = sb.instantiateViewControllerWithIdentifier("PDAddAppViewController") as PDAddAppViewController
+                var vc: PDLoginViewController = sb.instantiateViewControllerWithIdentifier("PDLoginViewController") as! PDLoginViewController
                 viewC.presentViewController(vc, animated: true, completion: nil)
             }
         })
