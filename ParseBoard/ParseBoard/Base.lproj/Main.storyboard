@@ -285,29 +285,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Parse Email" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ucx-9t-Q9N">
-                                <rect key="frame" x="147" y="122" width="308" height="51"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="308" id="ZwP-sN-hVV"/>
-                                    <constraint firstAttribute="height" constant="51" id="kYC-bd-jlj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MoA-T7-saN">
-                                <rect key="frame" x="126" y="207" width="349" height="50"/>
+                                <rect key="frame" x="36" y="208" width="528" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="349" id="4Eu-pu-v84"/>
                                     <constraint firstAttribute="height" constant="50" id="ZDf-dc-6UI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4Eu-pu-v84"/>
+                                    </mask>
+                                </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPL-nP-WDw" customClass="PDButton" customModule="ParseBoard" customModuleProvider="target">
-                                <rect key="frame" x="36" y="277" width="528" height="45"/>
+                                <rect key="frame" x="36" y="293" width="528" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="193" id="1Tg-PI-2iP"/>
-                                    <constraint firstAttribute="height" constant="45" id="DTw-DH-tB7"/>
+                                    <constraint firstAttribute="height" constant="50" id="DTw-DH-tB7"/>
                                 </constraints>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
@@ -322,15 +318,33 @@
                                     <action selector="nextButtonClick:" destination="T1L-vO-f1N" eventType="touchUpInside" id="5fP-oi-DcW"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Parse Email" textAlignment="center" minimumFontSize="17" background="TextFieldBackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ucx-9t-Q9N">
+                                <rect key="frame" x="36" y="122" width="528" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="308" id="ZwP-sN-hVV"/>
+                                    <constraint firstAttribute="height" constant="51" id="kYC-bd-jlj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ZwP-sN-hVV"/>
+                                    </mask>
+                                </variation>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.31764705882352939" green="0.61176470588235299" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="oPL-nP-WDw" firstAttribute="top" secondItem="MoA-T7-saN" secondAttribute="bottom" constant="20" id="8jC-Ij-CSn"/>
+                            <constraint firstItem="oPL-nP-WDw" firstAttribute="top" secondItem="MoA-T7-saN" secondAttribute="bottom" constant="35" id="8jC-Ij-CSn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MoA-T7-saN" secondAttribute="trailing" constant="20" id="BBL-cc-ab3"/>
                             <constraint firstItem="MoA-T7-saN" firstAttribute="centerX" secondItem="oPL-nP-WDw" secondAttribute="centerX" constant="102" id="D3v-yo-QzG"/>
-                            <constraint firstItem="MoA-T7-saN" firstAttribute="top" secondItem="ucx-9t-Q9N" secondAttribute="bottom" constant="34" id="VSO-Lo-roY"/>
+                            <constraint firstItem="MoA-T7-saN" firstAttribute="top" secondItem="ucx-9t-Q9N" secondAttribute="bottom" constant="35" id="VSO-Lo-roY"/>
+                            <constraint firstItem="ucx-9t-Q9N" firstAttribute="leading" secondItem="Feh-Sf-NiV" secondAttribute="leadingMargin" constant="20" id="bIU-oM-1Dv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oPL-nP-WDw" secondAttribute="trailing" constant="20" id="dfy-QK-cLT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ucx-9t-Q9N" secondAttribute="trailing" constant="20" id="eUI-Ep-TT8"/>
                             <constraint firstItem="oPL-nP-WDw" firstAttribute="leading" secondItem="Feh-Sf-NiV" secondAttribute="leadingMargin" constant="20" id="kPV-fG-qDA"/>
-                            <constraint firstAttribute="centerX" secondItem="ucx-9t-Q9N" secondAttribute="centerX" constant="-1" id="vPZ-0F-NTi"/>
+                            <constraint firstItem="MoA-T7-saN" firstAttribute="leading" secondItem="Feh-Sf-NiV" secondAttribute="leadingMargin" constant="20" id="vNt-j0-AnX"/>
+                            <constraint firstAttribute="centerX" secondItem="ucx-9t-Q9N" secondAttribute="centerX" id="vPZ-0F-NTi"/>
                             <constraint firstAttribute="centerX" secondItem="MoA-T7-saN" secondAttribute="centerX" id="xtX-yL-oTD"/>
                             <constraint firstItem="ucx-9t-Q9N" firstAttribute="top" secondItem="hOs-a8-ZFY" secondAttribute="bottom" constant="102" id="znl-hw-VHd"/>
                         </constraints>
