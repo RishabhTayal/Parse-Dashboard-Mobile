@@ -2,3 +2,5 @@ ParseBoard/build/
 ParseBoard/Pods/
 
 *.xcuserstate
+
+*.xcbkptlist
