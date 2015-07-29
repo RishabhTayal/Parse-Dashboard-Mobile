@@ -19,6 +19,7 @@ class PDFirstViewController: UIViewController, UITableViewDataSource, UITableVie
         setMenuButton()
         
         var app: AppInfo = PDUtitility.getCurrentApp()
+        self.title = app.appname
         var request: NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/schemas")!)
         request.addValue(app.appid, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(app.masterKey, forHTTPHeaderField: "X-Parse-Master-Key")
